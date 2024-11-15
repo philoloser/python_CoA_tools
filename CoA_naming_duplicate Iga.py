@@ -10,7 +10,7 @@ print(
 sciezka_source = r"C:\Users\i.janowska\Torf Corporation Sp. z o.o\KJ - _Sharepoint_TC\QC kontrola jakosci\surowce\Certyfikaty\Certyfikaty\CERTYFIKATY 2024"
 sciezka_dest = r"C:\Users\i.janowska\Torf Corporation Sp. z o.o\KJ - _Sharepoint_TC\QC kontrola jakosci\surowce\Certyfikaty\Certyfikaty\CERTYFIKATY 2024"
 
-"C:\\Users\\k.jagusiak\\Torf Corporation Sp. z o.o\\KJ - General\\_Sharepoint_TC\\QC kontrola jakosci\\surowce\\Certyfikaty\\Certyfikaty\\CERTYFIKATY 2024"
+# "C:\\Users\\k.jagusiak\\Torf Corporation Sp. z o.o\\KJ - General\\_Sharepoint_TC\\QC kontrola jakosci\\surowce\\Certyfikaty\\Certyfikaty\\CERTYFIKATY 2024"
 
 cont = "1"
 
@@ -49,6 +49,8 @@ while cont == "1":
                 "--------------------------------------------------------------------------------"
             )
             b_old = input("¤ Wprowadź starą datę i CDN: ").upper()  # OLD B CONTAINS "B"
+            cdn = b_old[-6:]
+
             if b_old.__contains__("B"):
                 bnr_old = b_old.split(".")[0]
                 bnr_old2 = b_old.split(".")[1]
