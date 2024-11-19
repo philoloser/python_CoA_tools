@@ -14,7 +14,7 @@ print(
 )
 print("\n")
 
-sciezka_source = "C:\\Users\\i.janowska\\Documents\\OUTLOOKZALACZNIKI"
+sciezka_source = "C:\\Users\\i.janowska\\Documents\\outlook_attachments"
 sciezka_dest = (
     "C:\\Users\\i.janowska\\Torf Corporation Sp. z o.o\\"
     "KJ - _Sharepoint_TC\\QC kontrola jakosci\\surowce"
