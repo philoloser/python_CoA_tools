@@ -126,8 +126,8 @@ while cont == 1:
                             open_pdf_files.update(
                                 file.path for file in open_files
                                 if (file.path.lower().endswith('.pdf') and
-                                        os.path.dirname(file.path).lower() == sciezka_source.lower()
-                                        or  os.path.dirname(file.path).lower() == sciezka_outlook.lower()
+                                        os.path.dirname(file.path).lower() == sciezka_outlook.lower()
+                                        or os.path.dirname(file.path).lower() == sciezka_source.lower()
                                 )
                             )
                     except (psutil.NoSuchProcess, psutil.AccessDenied):
