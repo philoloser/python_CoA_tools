@@ -15,6 +15,7 @@ print(
 print("\n")
 
 sciezka_source = "C:\\Users\\i.janowska\\Documents\\outlook_attachments"
+sciezka_outlook = r"C:\Users\i.janowska\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\SK3V93ID"
 sciezka_dest = (
     "C:\\Users\\i.janowska\\Torf Corporation Sp. z o.o\\"
     "KJ - _Sharepoint_TC\\QC kontrola jakosci\\surowce"
@@ -111,6 +112,7 @@ while cont == 1:
                 print("Szukanie pliku...")
 
                 sciezka_source = os.path.abspath(sciezka_source)
+                sciezka_outlook = os.path.abspath(sciezka_outlook)
                 # Set to hold opened PDF files (using a set for faster lookups)
                 open_pdf_files = set()
 
@@ -123,7 +125,10 @@ while cont == 1:
                             # Use a list comprehension to filter and add opened PDF files
                             open_pdf_files.update(
                                 file.path for file in open_files
-                                if file.path.lower().endswith('.pdf') and os.path.dirname(file.path).lower() == sciezka_source.lower()
+                                if (file.path.lower().endswith('.pdf') and
+                                        os.path.dirname(file.path).lower() == sciezka_source.lower()
+                                        or  os.path.dirname(file.path).lower() == sciezka_outlook.lower()
+                                )
                             )
                     except (psutil.NoSuchProcess, psutil.AccessDenied):
                         continue
