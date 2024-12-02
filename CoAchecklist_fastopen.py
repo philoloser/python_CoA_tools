@@ -2,18 +2,32 @@ import os
 import glob
 import re
 
-petlowanie = 1 # Purely to loop the block of code
+petlowanie = 1
 
-coapath = (
-    "C:\\Users\\i.janowska\\Torf Corporation Sp. z o.o\\"
-    "KJ - _Sharepoint_TC\\QC kontrola jakosci\\surowce"
-    "\\Certyfikaty\\Certyfikaty\\CERTYFIKATY 2024\\"
+print(
+    "--------------------------------------------------------------------------------"
 )
-checkpath = (
-        r"C:\Users\i.janowska\OneDrive - Torf Corporation Sp. z o.o\Zalaczniki do CHECK LISTY" + '\\'
+print(
+    "                     ¤ SZYBKIE OTWIERANIE COA/CHECKLIST ¤                       "
+)
+print(
+    "--------------------------------------------------------------------------------"
 )
 
 while petlowanie == 1:
+
+    print('\n')
+
+    petlowanie = 1 # Purely to loop the block of code
+
+    coapath = (
+        "C:\\Users\\i.janowska\\Torf Corporation Sp. z o.o\\"
+        "KJ - _Sharepoint_TC\\QC kontrola jakosci\\surowce"
+        "\\Certyfikaty\\Certyfikaty\\CERTYFIKATY 2024\\"
+    )
+    checkpath = (
+            r"C:\Users\i.janowska\OneDrive - Torf Corporation Sp. z o.o\Zalaczniki do CHECK LISTY" + '\\'
+    )
 
     cdn = input("¤ Wpisz GK/CDN: ").upper()
 
@@ -34,22 +48,27 @@ while petlowanie == 1:
         print(lp)
         loopcount = loopcount + 1 # Increment the loopcount
 
-    choice = input()
-    print(files[choice]) # Pull the path of the selected file from dictionary
-
-    openfile = os.path.realpath(files[choice]) # Change to realpath object
-    if os.path.exists(openfile): # Check if file exists
-        os.startfile(openfile) # Open the file
+    if bool(files):
+        choice = input()
+        if not choice == "":
+            openfile = os.path.realpath(files[choice]) # Change to realpath object
+            if os.path.exists(openfile): # Check if file exists
+                os.startfile(openfile) # Open the file
+        else:
+            print("Pominięto.")
     else:
-        print("Folder CDN nie istnieje.")
-        print(
-            "--------------------------------------------------------------------------------"
-        )
+        print("Brak CoA.")
 
     if re.search('[A-Z]', cdn):  # Check if the string contains any letters
         # any(c.isalpha() for c in string_1)
         checkpath = checkpath + cdn
         if os.path.exists(checkpath):  # Check if dir exists
             os.startfile(checkpath)
-
+        else:
+            print("Folder CDN nie istnieje.")
+    print('\n')
+    print(
+        "--------------------------------------------------------------------------------"
+    )
+    continue
 
