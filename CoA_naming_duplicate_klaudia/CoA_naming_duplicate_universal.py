@@ -1,14 +1,22 @@
+
 import shutil
+import os
+import glob
+from pathlib import Path
 
-print(
-    "                            ¤ DUPLIKATY NAZYWARKA ¤                             "
-)
-print(
-    "--------------------------------------------------------------------------------"
-)
+print("                            ¤ DUPLIKATY NAZYWARKA ¤                             ")
+print("--------------------------------------------------------------------------------")
 
-sciezka_source = r"C:\Users\k.jagusiak\Torf Corporation Sp. z o.o\KJ - _Sharepoint_TC\QC kontrola jakosci\surowce\Certyfikaty\certyfikaty_wg_lat\certyfikaty_2024"
-sciezka_dest = r"C:\Users\k.jagusiak\Torf Corporation Sp. z o.o\KJ - _Sharepoint_TC\QC kontrola jakosci\surowce\Certyfikaty\certyfikaty_wg_lat\certyfikaty_2024"
+coa_dir_rootname = 'certyfikaty_'
+year = "2024"
+coa_dir_name = coa_dir_rootname + year
+
+# Searching for CoA directory in 'surowce'
+script_path = os.path.dirname(os.path.realpath(__file__))
+parent_path = str(Path(script_path).parents[2])
+found_path = glob.glob('**/' + coa_dir_name, root_dir=parent_path, recursive=True)[0]
+# Joining the found_path with parent_path
+coa_dir_path = os.path.realpath(os.path.join(parent_path, found_path))
 
 cont = "1"
 
@@ -141,8 +149,8 @@ while cont == "1":
     poprawne = input()
 
     if poprawne == "1":
-        source = sciezka_source + "\\" + old + ".pdf"
-        dest = sciezka_dest + "\\" + new + ".pdf"
+        source = coa_dir_path + "\\" + old + ".pdf"
+        dest = coa_dir_path + "\\" + new + ".pdf"
         shutil.copy(source, dest)
         print(
             "--------------------------------------------------------------------------------"
